@@ -1,10 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-//import App from './App.js';
-import Hello from './Hello.js';
-import 'tachyons'; //access to tachyons package similar to bootstrap
-import registerServiceWorker from './registerServiceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import "./fonts.css";
+import App from "./App";
 
-ReactDOM.render(<Hello greeting = {'Hello'+'React Ninja'}/>, document.getElementById('root'));
+import "tachyons"; //access to tachyons package similar to bootstrap
+//import {robots} from "./robots";
+import registerServiceWorker from "./registerServiceWorker";
+
+ReactDOM.render(<App/>, document.getElementById("root"));
 registerServiceWorker();
