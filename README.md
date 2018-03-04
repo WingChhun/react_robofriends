@@ -2,6 +2,10 @@
 
 A starter react app built with ReactJS. This app is part of a code along from Udemy's The Complete Web Developer Bootcamp, and the purpose is to become exposed to the workflow of React and be exposed to building a app that involves React components, state, props, life cycle methods, jsx, and incorporating ajax calls.
 
+## Notes, Thoughts
+ - Fantastic course and intro to React
+ - Built confidence building small web apps with React, will experiment next week with various Apps to expand upon the knowledge gained from building this app / course
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
