@@ -14,11 +14,25 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      robots: robots,
+      robots: [],
       searchField: ""
     };
   }
-
+  componentDidMount() {
+    //AJAX https://jsonplaceholder.typicode.com/users
+    //AJAX METHOD HERE
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => {
+        response.json();
+      })
+      .then(users => {
+        console.log("Setting robot state...");
+        this.setState({ robots: robots });
+      })
+      .catch(err => {
+        console.log("Error");
+      });
+  }
   //Change state.SearchField everytime user types in search box
   onSearchChange = event => {
     this.setState({ searchField: event.target.value });
@@ -30,13 +44,17 @@ class App extends Component {
         .toLowerCase()
         .includes(this.state.searchField.toLowerCase());
     });
-    return (
-      <div className="tc">
-        <h1 className = "f2">Robofriends</h1>
-        <SearchBox searchChange={this.onSearchChange} />
-        <CardList robots={filteredRobots} />
-      </div>
-    ); //end return expression
+    if (robots.length === 0) {
+      return <h1>Loading robots</h1>;
+    } else {
+      return (
+        <div className="tc">
+          <h1 className="f2">Robofriends</h1>
+          <SearchBox searchChange={this.onSearchChange} />
+          <CardList robots={filteredRobots} />
+        </div>
+      ); //end return expression
+    } //end else
   } //end render() function
 }
 
