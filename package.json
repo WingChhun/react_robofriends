@@ -9,7 +9,7 @@
     "react-scripts": "1.1.1",
     "tachyons": "^4.9.1"
   },
-  "homepage": "http://WingChhun.github.io/react_robofriends",
+  "homepage": "http://wingchhun.github.io/react_robofriends",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
