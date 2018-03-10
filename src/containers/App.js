@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CardList from "../components/CardList.js";
-import { robots } from "../robots";
+//import { robots } from "../robots";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 class App extends Component {
@@ -23,11 +23,15 @@ class App extends Component {
     //AJAX METHOD HERE
     fetch("https://jsonplaceholder.typicode.com/users")
       .then(response => {
-        response.json();
+        return response.json();
       })
       .then(users => {
-        console.log("Setting robot state...");
-        this.setState({ robots: robots });
+        console.log("Setting robot state...", users);
+
+        this.setState({
+          robots: users
+        });
+        console.log("ComponentDidMount(), set robots array with users", "Success");
       })
       .catch(err => {
         console.log("Error");
@@ -35,7 +39,9 @@ class App extends Component {
   }
   //Change state.SearchField everytime user types in search box
   onSearchChange = event => {
-    this.setState({ searchField: event.target.value });
+    this.setState({
+      searchField: event.target.value
+    });
   };
   //
   render() {
@@ -45,15 +51,15 @@ class App extends Component {
     });
     //If no robots show loading
     if (!robots.length) {
-      return <h1>Loading robots</h1>;
+      return <h1> Loading robots </h1>;
     } else {
       return (
         <div className="tc">
-          <h1 className="f2">Robofriends</h1>
-          <SearchBox searchChange={this.onSearchChange} />
+          <h1 className="f2"> Robofriends </h1>{" "}
+          <SearchBox searchChange={this.onSearchChange} />{" "}
           <Scroll>
-            <CardList robots={filteredRobots} />
-          </Scroll>
+            <CardList robots={filteredRobots} />{" "}
+          </Scroll>{" "}
         </div>
       ); //end return expression
     } //end else
