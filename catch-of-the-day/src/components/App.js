@@ -4,6 +4,8 @@ import Inventory from "./Inventory";
 import Order from "./Order";
 import sampleFishes from "../sample-fishes"; //sample fishes
 import Fish from "./Fish";
+//import firebase
+import base from "../base";
 class App extends React.Component {
   constructor() {
     super(); //inherit React properties
@@ -11,6 +13,20 @@ class App extends React.Component {
       fishes: {},
       order: {}
     };
+  }
+  //LIFECYCLE
+  //sync state to firebase
+  componentDidMount() {
+    console.log("mounting component", " connecting to firebase");
+    const { params } = this.props.match;
+    this.ref = base.syncState(`${params.storeId}/fishes`, {
+      context: this,
+      state: "fishes"
+    });
+  }
+  componentWillUnmount() {
+    console.log("unmounted component");
+    base.removeBinding(this.ref);
   }
   //Update fishes in state
   addFish = fish => {
