@@ -6,7 +6,7 @@ class Order extends React.Component {
     const count = this.props.order[key];
     const isAvailable = fish && fish.status === "available";
     if (!fish) 
-      return null;
+    return null;
     if (!isAvailable) {
       return (
         <li key={key}>
@@ -28,6 +28,7 @@ class Order extends React.Component {
   render() {
     const orderIds = Object.keys(this.props.order);
 
+    //Accumulate a order total
     const total = orderIds.reduce((prevTotal, key) => {
       const fish = this.props.fishes[key]; //get fishes prop to get th eprice
       const count = this.props.order[key];
